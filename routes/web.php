@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/insertionBD', function() {
+    return view('home');
+})->name('insertionBD');
+
+Route::get('/afficheTransaction', function() {
+    return view('home');
+})->name('afficheTransaction');
+
+Route::get('/bonus', function() {
+    return view('home');
+})->name('bonus');
