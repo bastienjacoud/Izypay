@@ -3,6 +3,8 @@
     <div class="container">
         <h1 class="bvn"> Affichage des 5 évênements avec le plus de transactions : </h1>
         &nbsp;
+        @foreach($table_transactions as $transactions)
+        <p>Cet évênement possède {{ count($transactions) }} transactions.</p>
         <table class="table table-hover">
             <tr>
                 <th>
@@ -39,13 +41,13 @@
                     Date de création
                 </th>
             </tr>
-            @foreach($transactions as $transaction)
+            @foreach(value($transactions) as $transaction)
                 <tr>
                     <td>
                         {{ $transaction->event_name }}
                     </td>
                     <td>
-                        {{ $nbTransactions }}
+                        {{ count($transactions) }}
                     </td>
                     <td>
                         {{ $transaction->merchant }}
@@ -77,6 +79,7 @@
                 </tr>
             @endforeach
         </table>
+        @endforeach
         &nbsp;
         <a href="{{ url('/') }}" class="btn btn-info btn-lg">
             <i class="fa fa-home"></i> Home

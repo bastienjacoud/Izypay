@@ -14,8 +14,8 @@ class TransactionController extends Controller
         Session::forget('erreur');
         $transaction = new Transaction();
         $transactions = $transaction->getTransactions();
-        return view('affichage')->with(['nbTransactions' => $transactions[0],
-                                             'transactions' => $transactions[1],
+        //dump($transactions);
+        return view('affichage')->with(['table_transactions' => value($transactions),
                                              'erreur' => $erreur]);
     }
 }
