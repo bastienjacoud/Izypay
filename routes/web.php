@@ -22,9 +22,7 @@ Route::get('insertionBD', function () {
 
 //Route::get('afficheTransaction', 'TransactionController@afficheTransaction')->name('afficheTransaction');
 
-Route::get('bonus', function() {
-    return view('home');
-})->name('bonus');
+Route::get('bonus', 'BilletController@afficheTabBillets')->name('bonus');
 
 Route::get('afficheTransaction', 'TransactionController@afficheFormTransaction')->name('afficheTransaction');
 
