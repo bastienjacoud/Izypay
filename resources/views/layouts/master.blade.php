@@ -16,38 +16,42 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header col-xs-8 offset-xs-6">
+    <div id="main">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header col-xs-8 offset-xs-6">
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ route('insertionBD') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Insertion</a></li>
+                        <li><a href="{{ route('afficheTransaction') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Affichage</a></li>
+                        <li><a href="{{ route('bonus') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Bonus</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ route('insertionBD') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Insertion</a></li>
-                    <li><a href="{{ route('afficheTransaction') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Affichage</a></li>
-                    <li><a href="{{ route('bonus') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Bonus</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    @yield('content')
-
+        </nav>
+        @yield('content')
+    </div>
 </div>
 
-<footer class = "footer panel-footer">
+<footer class = "footer panel-footer footer_perso">
     Réalisé par Bastien Jacoud
+    <div id="date" class="col-xs-1 col-xs-offset-11">
+        {{ date('d/M/Y') }}
+    </div>
 </footer>
 
 <!-- Scripts -->

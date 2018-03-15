@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="container">
+<div class="container col-xs-6 col-lg-offset-3" id="affichage_cont">
     <h1 class="bvn"> Gestion des évênements et des transactions </h1>
     <br><br>
     <h2>

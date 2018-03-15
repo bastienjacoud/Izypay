@@ -20,8 +20,12 @@ Route::get('insertionBD', function () {
     return view('home');
 })->name('insertionBD');
 
-Route::get('afficheTransaction', 'TransactionController@afficheTransaction')->name('afficheTransaction');
+//Route::get('afficheTransaction', 'TransactionController@afficheTransaction')->name('afficheTransaction');
 
 Route::get('bonus', function() {
     return view('home');
 })->name('bonus');
+
+Route::get('afficheTransaction', 'TransactionController@afficheFormTransaction')->name('afficheTransaction');
+
+Route::post('listerAffichage', 'TransactionController@afficheTransaction')->name('listerAffichage');

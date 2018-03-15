@@ -8,16 +8,27 @@ use function Sodium\add;
 class Transaction extends Model
 {
     //
-    public function getTransactions(){
+    public function getTransactions($checkbox_statut){
         $json_data = $this->lectJson();
 
         $tmp =[];
 
         foreach ($json_data as $data){
-            if(!array_key_exists($data->{'event_name'}, $tmp)){
-                $tmp[$data->{'event_name'}] = [];
+            if($checkbox_statut){
+                if($data->{'status'} == true){
+                    if(!array_key_exists($data->{'event_name'}, $tmp)){
+                        $tmp[$data->{'event_name'}] = [];
+                    }
+                    array_push($tmp[$data->{'event_name'}], $data);
+                }
             }
-            array_push($tmp[$data->{'event_name'}], $data);
+            else{
+                if(!array_key_exists($data->{'event_name'}, $tmp)){
+                    $tmp[$data->{'event_name'}] = [];
+                }
+                array_push($tmp[$data->{'event_name'}], $data);
+            }
+
         }
 
         $maxis = [['', 0], ['', 0], ['', 0], ['', 0], ['', 0]];
