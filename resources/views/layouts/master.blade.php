@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -42,7 +43,12 @@
         </div>
     </nav>
     @yield('content')
+
 </div>
+
+<footer class = "footer panel-footer">
+    Réalisé par Bastien Jacoud
+</footer>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

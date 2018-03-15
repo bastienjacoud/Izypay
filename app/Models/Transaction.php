@@ -9,16 +9,8 @@ class Transaction extends Model
 {
     //
     public function getTransactions(){
-        // Si les données json sont dans un fichier distant:
-        //$json_source = file_get_contents('http://...../fichier.json');
+        $json_data = $this->lectJson();
 
-        // Si les données json sont dans une variable sans passer par un fichier distant:
-        $json_source = file_get_contents("../storage/data.json");
-
-        // Décode le JSON
-        $json_data = json_decode($json_source);
-        //$tab = ["ev1" => ["e1", "e2"], "ev2"];
-        //count($tab['ev1']);
         $tmp =[];
 
         foreach ($json_data as $data){
@@ -49,10 +41,21 @@ class Transaction extends Model
     }
 
     /**
-     * @param $tab      Big tab
-     * @param $element  ['event', size]
+     * @return mixed
      */
-    protected function insertInTab(&$tab, $element, $index) {
+    private function lectJson(){
+        $json_source = file_get_contents("../storage/data.json");
+
+        return json_decode($json_source);
+    }
+
+    /**
+     * @param $tab
+     * @param $element
+     * @param $index
+     * @return mixed
+     */
+    private function insertInTab(&$tab, $element, $index) {
         if($element[1] > $tab[$index][1]) {
             $tmp = $tab[$index];
             if($index > 0) {

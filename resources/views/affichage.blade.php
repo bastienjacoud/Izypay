@@ -4,8 +4,10 @@
         <h1 class="bvn"> Affichage des 5 évênements avec le plus de transactions : </h1>
         &nbsp;
         @foreach($table_transactions as $transactions)
-        <p>Cet évênement possède {{ count($transactions) }} transactions.</p>
-        <table class="table table-hover">
+        <br><br>
+        <h2>Cet évênement possède {{ count($transactions) }} transactions.</h2>
+        &nbsp;
+        <table class="table table-hover table-striped">
             <tr>
                 <th>
                     Nom
@@ -44,37 +46,37 @@
             @foreach(value($transactions) as $transaction)
                 <tr>
                     <td>
-                        {{ $transaction->event_name }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->event_name) }}
                     </td>
                     <td>
                         {{ count($transactions) }}
                     </td>
                     <td>
-                        {{ $transaction->merchant }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->merchant) }}
                     </td>
                     <td>
-                        {{ $transaction->terminal }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->terminal) }}
                     </td>
                     <td>
-                        {{ $transaction->status }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->status) }}
                     </td>
                     <td>
-                        {{ $transaction->card_id }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->card_id) }}
                     </td>
                     <td>
-                        {{ $transaction->card_type }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->card_type) }}
                     </td>
                     <td>
-                        {{ $transaction->amount }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->amount) }}
                     </td>
                     <td>
-                        {{ $transaction->currency }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->currency) }}
                     </td>
                     <td>
-                        {{ $transaction->country }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->country) }}
                     </td>
                     <td>
-                        {{ $transaction->created }}
+                        {{ str_replace(' ', "&nbsp;", $transaction->created) }}
                     </td>
                 </tr>
             @endforeach

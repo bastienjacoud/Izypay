@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Session;
 
 class TransactionController extends Controller
 {
-    //
+    /**
+     * @return $this
+     */
     public function afficheTransaction(){
         $erreur = Session::get('erreur');
         Session::forget('erreur');
