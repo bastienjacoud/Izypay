@@ -22,7 +22,7 @@ class Billet extends Model
             $index ++;
         }
 
-        return json_encode(array("result" => $res), JSON_PRETTY_PRINT);
+        return json_encode(["result" => $res]);
     }
 
     /**

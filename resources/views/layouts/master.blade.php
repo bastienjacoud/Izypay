@@ -19,7 +19,7 @@
     <div id="main">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
-                <div class="navbar-header col-xs-8 offset-xs-6">
+                <div class="navbar-header col-xs-8 col-offset-xs-2">
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
@@ -36,7 +36,6 @@
                 </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('insertionBD') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Insertion</a></li>
                         <li><a href="{{ route('afficheTransaction') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Affichage</a></li>
                         <li><a href="{{ route('bonus') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Bonus</a></li>
                     </ul>

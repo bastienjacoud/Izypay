@@ -8350,13 +8350,29 @@ button.close {
   }
 }
 
-#btn_home {
-  margin-top: 250px;
+#container_form_aff {
+  margin-top: 13%;
+  position: center;
 }
 
-#affichage_cont {
-  margin-top: 225px;
-  height: 550px;
+#btn_home {
+  margin-top: 15%;
+  margin-left: auto;
+}
+
+#presentation {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 10%;
+}
+
+#titre_home {
+  text-align: center;
+}
+
+#container_home {
+  margin-top: 13%;
+  position: center;
 }
 
 html,
@@ -8365,19 +8381,25 @@ body {
 }
 
 #app {
-  min-height: 99%;
+  min-height: 100%;
 }
 
 #main {
   overflow: auto;
   padding-bottom: 70px;
-  /* this needs to be bigger than footer height*/
+}
+
+nav {
+  position: relative;
+  margin-bottom: 50px;
+  height: 50px;
+  clear: both;
+  padding-bottom: 20px;
 }
 
 footer {
   position: relative;
   margin-top: -50px;
-  /* negative value of footer height */
   height: 50px;
   clear: both;
   padding-top: 20px;
