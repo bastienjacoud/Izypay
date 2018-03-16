@@ -8,13 +8,41 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+#texte_erreur {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 3%;
+}
+
+#erreur {
+  font-size:48px;
+  color:red
+}
+
+#btn_download {
+  padding-right: 0px;
+}
+
+#btn_radio {
+  height: 25px;
+  width: 25px;
+  left:3px;
+  top: -7px;
+  margin-left: 50px;
+}
+
+#texte_formAff {
+  text-align: left;
+  font-size: 25px;
+}
+
 #container_form_aff {
-  margin-top: 13%;
+  margin-top: 7%;
   position: center;
 }
 
 #btn_home {
-  margin-top: 15%;
+  margin-top: 20%;
 }
 
 #presentation {
@@ -23,7 +51,7 @@
   margin-top: 10%;
 }
 
-#titre_home {
+#titre_home, #soustitre_tab, #titre_aff, #titre_bonus {
   text-align: center;
 }
 
@@ -54,6 +82,17 @@ nav {
   padding-bottom: 20px;
 }
 
+pre {
+  max-height: 600px;
+  overflow: auto;
+}
+
+#table_transactions {
+  padding-right: 15px;
+  padding-left: 15px;
+  max-height: 600px;
+  overflow: auto;
+}
 
 footer {
   position: relative;
@@ -86,6 +125,7 @@ footer {
   position: absolute;
   left:3px; top: -7px;
   width: 25px; height: 25px; /* dim. de la case */
+  margin-left: 32px;
   border: 1px solid #aaa;
   background: #f8f8f8;
   border-radius: 3px; /* angles arrondis */
@@ -98,6 +138,7 @@ footer {
   content: '✔';
   position: absolute;
   top: -10px; left: 7px;
+  margin-left: 32px;
   font-size: 20px;
   color: #09ad7e;
   transition: all .2s; /* on prévoit une animation */

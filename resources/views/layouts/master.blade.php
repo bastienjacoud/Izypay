@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<footer class = "footer panel-footer footer_perso">
+<footer class = "footer panel-footer">
     Réalisé par Bastien Jacoud
     <div id="date" class="col-xs-1 col-xs-offset-11">
         {{ date('d/M/Y') }}

@@ -8,8 +8,8 @@ use function Sodium\add;
 class Transaction extends Model
 {
     //
-    public function getTransactions($checkbox_statut){
-        $json_data = $this->lectJson();
+    public function getTransactions($checkbox_statut, $file){
+        $json_data = $this->lectJson($file);
 
         $tmp =[];
 
@@ -54,8 +54,9 @@ class Transaction extends Model
     /**
      * @return mixed
      */
-    private function lectJson(){
-        $json_source = file_get_contents("../storage/data.json");
+    private function lectJson($file){
+        $path = "app/objectif/" . basename($file);
+        $json_source = file_get_contents(storage_path($path));
 
         return json_decode($json_source);
     }

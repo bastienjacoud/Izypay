@@ -1,8 +1,7 @@
         @if($erreur!= "")
-        <p>
-            <div class="alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>  {{ $erreur or '' }}
-            </div>
-        </p>
+        <div role="alert">
+            <p id="texte_erreur">
+                <i class="fas fa-exclamation-triangle" id="erreur"></i> {{ $erreur or '' }}
+            </p>
+        </div>
       @endif
-

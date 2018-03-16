@@ -16,7 +16,7 @@ class BilletController extends Controller
         $billet = new Billet();
         $billets = $billet->getTabBillets();
 
-        return view('bonus')->with(['tab_billets' => $billets,
+        return view('bonus', ['tab_billets' => $billets,
             'erreur' => $erreur]);
     }
 }

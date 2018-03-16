@@ -3,30 +3,57 @@
 <div class="container" id="container_form_aff">
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
-            <form class="form-horizontal" action="{{ route('listerAffichage') }}" method="POST">
+            <form class="form-horizontal" action="{{ route('listerAffichage') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <table>
-                    <tr>
-                        <td>
-                            <h2>Afficher uniquement les transaction dont le statut vaut 1 :&nbsp;&nbsp;</h2>
-                        </td>
-                        <td class="checkbok col-xs-1">
-                            <input type="checkbox" id="checkbox1" name="check_statut" value=1>
-                            <label for="checkbox1"></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+                    <div class="form-group">
+                        <tr>
+                            <td>
+                                <p id="texte_formAff">Afficher uniquement les transactions dont le statut vaut 1 :&nbsp;&nbsp;</p>
+                            </td>
+                            <td class="checkbok col-xs-1">
+                                <input class="form-control" type="checkbox" id="checkbox1" name="check_statut" value=1>
+                                <label class="control-label" for="checkbox1"></label>
+                            </td>
+                        </tr>
+                    </div>
 
-                        </td>
-                        <td class="col-xs-1">
-                            <button type="submit" class="btn btn-info btn-lg">Afficher</button>
-                        </td>
-                    </tr>
+                    <div class="form-group">
+                        @foreach($nomFichiers as $nomFichier)
+                        <tr>
+                            <td>
+                                <p id="texte_formAff">{{ basename($nomFichier) }}</pcla>
+                            </td>
+                            <td>
+                                <input class="form-control" type="radio" name="chx_radio" id="btn_radio" value={{ basename($nomFichier) }}>
+                            </td>
+                        </tr>
+                        @endforeach
+                        <tr>
+                            <td id="texte_formAff">
+                                <input type="file" name="fichier" id="file">
+                            </td>
+                            <td>
+                                <input class="form-control" type="radio" name="chx_radio" value="uploaded_file" id="btn_radio" checked>
+                            </td>
+                        </tr>
+                    </div>
+
+                    <div class="form-group">
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td class="col-xs-1">
+                                <button type="submit" class="btn btn-info btn-lg" value="btn_afficher">Afficher</button>
+                            </td>
+                        </tr>
+                    </div>
                 </table>
             </form>
         </div>
     </div>
+
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
             <a href="{{ url('/') }}" class="btn btn-info btn-lg" id="btn_home">
@@ -34,9 +61,10 @@
             </a>
         </div>
     </div>
+
     <div class="row">
         <div class="col-xs10 col-xs-offset-1">
-            @include('error')
+            @include('error', ['erreur' => $erreur])
         </div>
     </div>
 </div>

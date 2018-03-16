@@ -1,14 +1,25 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container row">
-        <div class="col-xs-8 col-xs-offset-2" id="affichage_cont">
-            <h1 class="bvn"> Affichage de l'objet Json obtenu : </h1>
-            <br><br>
-            <div>
-                {!! $tab_billets !!}
+    <div class="container">
+        <div class="row">
+            <div id="affichage_cont">
+                <h1 class="bvn" id="titre_bonus"> Affichage de l'objet Json obtenu : </h1>
+                <br><br>
+                <pre>
+                    {!!  $tab_billets !!}
+                </pre>
             </div>
-            <div class="col-md-6 col-md-offset-3">
-                @include('error')
+        </div>
+        <div class="row">
+            <div class="col-xs-10">
+                <a href="{{ url('/') }}" class="btn btn-info btn-lg">
+                    <i class="fa fa-home"></i> Home
+                </a>
+            </div>
+            <div class="col-xs-2">
+                <a href="{{ url('/') }}" class="btn btn-info btn-lg">
+                    <i class="fa fa-download"></i> Download
+                </a>
             </div>
         </div>
     </div>
