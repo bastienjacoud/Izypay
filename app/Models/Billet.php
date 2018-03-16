@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Response;
 class Billet extends Model
 {
     //
-    public function getTabBillets()
+    public function getTabBillets($file)
     {
-        $json_data = $this->lectJson();
+        $json_data = $this->lectJson($file);
 
         $nbImpressions = ceil(count($json_data) / 6000);
         $impressions = array_chunk($json_data, 6000);
@@ -29,9 +29,10 @@ class Billet extends Model
     /**
      * @return mixed
      */
-    private function lectJson()
+    private function lectJson($file)
     {
-        $json_source = file_get_contents("../storage/data_bonus.json");
+        $path = "app/bonus/" . basename($file);
+        $json_source = file_get_contents(storage_path($path));
 
         return json_decode($json_source);
     }

@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div class="col-xs-2">
-                <a href="{{ url('/') }}" class="btn btn-info btn-lg">
+                <a href="{{ route('download') }}" class="btn btn-info btn-lg">
                     <i class="fa fa-download"></i> Download
                 </a>
             </div>

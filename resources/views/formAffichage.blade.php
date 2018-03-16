@@ -22,7 +22,7 @@
                         @foreach($nomFichiers as $nomFichier)
                         <tr>
                             <td>
-                                <p id="texte_formAff">{{ basename($nomFichier) }}</pcla>
+                                <p id="texte_formAff">{{ basename($nomFichier) }}</p>
                             </td>
                             <td>
                                 <input class="form-control" type="radio" name="chx_radio" id="btn_radio" value={{ basename($nomFichier) }}>

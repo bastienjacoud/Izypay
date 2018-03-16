@@ -37,7 +37,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('afficheTransaction') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Affichage</a></li>
-                        <li><a href="{{ route('bonus') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Bonus</a></li>
+                        <li><a href="{{ route('listerBonus') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Bonus</a></li>
                     </ul>
                 </div>
             </div>

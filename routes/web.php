@@ -20,10 +20,13 @@ Route::get('insertionBD', function () {
     return view('home');
 })->name('insertionBD');
 
-//Route::get('afficheTransaction', 'TransactionController@afficheTransaction')->name('afficheTransaction');
-
-Route::get('bonus', 'BilletController@afficheTabBillets')->name('bonus');
 
 Route::get('afficheTransaction', 'TransactionController@afficheFormTransaction')->name('afficheTransaction');
 
 Route::post('listerAffichage', 'TransactionController@afficheTransaction')->name('listerAffichage');
+
+Route::get('listerBonus', 'BilletController@afficheFormBillet')->name('listerBonus');
+
+Route::post('bonus', 'BilletController@afficheTabBillets')->name('bonus');
+
+Route::get('download', 'BilletController@download')->name('download');
