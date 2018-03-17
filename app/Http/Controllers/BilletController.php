@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use SplFileObject;
+use Symfony\Component\Finder\SplFileInfo;
 
 
 class BilletController extends Controller
@@ -30,9 +32,8 @@ class BilletController extends Controller
             $billet = new Billet();
             $billets = $billet->getTabBillets($file);
 
-            //Creation du fichier de download
-            File::put($file, $billets);
-            Session::put('file', $file);
+            $newFile = fopen(storage_path('app/bonus/resultat.json'), 'w+');
+            fwrite($newFile, $billets);
 
             return view('bonus', ['tab_billets' => $billets,
                 'erreur' => $erreur]);
@@ -87,13 +88,12 @@ class BilletController extends Controller
     }
 
     public function download(){
-        $file= Session::get('file');
-        Session::forget('file');
 
         $headers = array(
             'Content-Type: response/json',
         );
 
-        return Response::download($file, 'reponse.json', $headers);
+        //return Response::download($file, 'reponse.json', $headers);
+        return response()->download(storage_path('app/bonus/resultat.json'), 'response.json', $headers);
     }
 }
