@@ -12,21 +12,39 @@
 */
 
 
+/**
+ * Route vers la page principale (home)
+ */
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('insertionBD', function () {
-    return view('home');
-})->name('insertionBD');
 
-
+/**
+ * Route allant vers la fonction d'affichage du formulaire de l'exercice principal
+ */
 Route::get('afficheTransaction', 'TransactionController@afficheFormTransaction')->name('afficheTransaction');
 
+
+/**
+ * Route allant vers la fonction d'affichage du résultat de l'exercice principal
+ */
 Route::post('listerAffichage', 'TransactionController@afficheTransaction')->name('listerAffichage');
 
+
+/**
+ * Route allant vers la fonction d'affichage du formulaire de l'exerice bonus
+ */
 Route::get('listerBonus', 'BilletController@afficheFormBillet')->name('listerBonus');
 
+
+/**
+ * Route allant vers la fonction d'affichage du résultat de l'exercice bonus
+ */
 Route::post('bonus', 'BilletController@afficheTabBillets')->name('bonus');
 
+
+/**
+ * Route allant vers la fonction de download du fichier de résultat
+ */
 Route::get('download', 'BilletController@download')->name('download');

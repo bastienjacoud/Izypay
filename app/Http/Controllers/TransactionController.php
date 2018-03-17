@@ -7,12 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
+/**
+ * Class TransactionController
+ * @package App\Http\Controllers
+ * Controlleur utilisé pour le modèle et les vues de l'exercice principal
+ */
 class TransactionController extends Controller
 {
+    /**
+     * @param $fichier
+     * @return bool indiquant si un fichier existe déjà dans le dossier de stockage
+     */
     private function verifieExistance($fichier){
         $fichiers = File::allFiles(storage_path('app/objectif'));
-        foreach($fichiers as $file)
-        {
+        foreach($fichiers as $file) {
             if(basename($file) === $fichier){
                 return true;
             }
@@ -20,24 +28,26 @@ class TransactionController extends Controller
         return false;
     }
 
+    /**
+     * Fonction qui ajoute un fichier dans le répertoire de stockage s'il n'existe déjà pas
+     * @param Request $request
+     */
     private function ajouteFichier(Request $request){
         $fichier = $request->input('chx_radio');
         if($fichier === "uploaded_file")
             $fichier = $request->file('fichier')->getClientOriginalName();
-
-        // A ce stage fichier peut valoir : nom d'un fichier, null ou ""
-
         if(!$this->verifieExistance($fichier))
             $this->upload($request);
     }
 
     /**
-     * @return $this
+     * @return vue affichant le résultat de l'exercice principal
+     * Si aucun fichier n'a été sélectionné, redirige sur la même page et affiche un
+     * message d'erreur
      */
     public function afficheTransaction(Request $request){
         $erreur = Session::get('erreur');
         Session::forget('erreur');
-
         $file = $request->input('chx_radio');
         if($file === "uploaded_file"){
             if($request->file('fichier') !== null)
@@ -45,7 +55,6 @@ class TransactionController extends Controller
             else
                 $file = null;
         }
-
         if($file !== "" && $file !== null){
             $this->ajouteFichier($request);
 
@@ -63,10 +72,10 @@ class TransactionController extends Controller
     }
 
     /**
-     * @return $this
+     * @return vue affichant le formulaire de choix de fichier et de choix du traitement (avec ou sans statut=1)
+     * pour l'exercice principal
      */
     public function afficheFormTransaction(){
-
         $erreur = Session::get('erreur');
         Session::forget('erreur');
         $nomFichiers = File::allFiles(storage_path('app/objectif'));
@@ -74,6 +83,10 @@ class TransactionController extends Controller
                                                     'erreur' => $erreur]);
     }
 
+    /**
+     * Upload le fichier sélectionné et le stock dans le réperoire objectif de storage
+     * @param Request $request
+     */
     private function upload(Request $request) {
         $this->validate($request, [
             'file' => 'mimes:json', //accepte uniquement les fichiers ".json"

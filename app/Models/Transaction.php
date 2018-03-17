@@ -3,16 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use function Sodium\add;
 
+/**
+ * Classe utilisée pour le traitement métier de l'exercice principal
+ * Class Transaction
+ * @package App\Models
+ */
 class Transaction extends Model
 {
-    //
+    /**
+     * Retourne sous forme de tableau la réponse à l'exerice principal
+     * @param $checkbox_statut
+     * @param $file
+     * @return array
+     */
     public function getTransactions($checkbox_statut, $file){
         $json_data = $this->lectJson($file);
-
         $tmp =[];
-
         foreach ($json_data as $data){
             if($checkbox_statut){
                 if($data->{'status'} == true){
@@ -28,18 +35,13 @@ class Transaction extends Model
                 }
                 array_push($tmp[$data->{'event_name'}], $data);
             }
-
         }
-
         $maxis = [['', 0], ['', 0], ['', 0], ['', 0], ['', 0]];
-
-
         foreach ($tmp as $name => $subtab) {
             $taille = count($subtab);
             $actu = [$name, $taille];
             $this->insertInTab($maxis, $actu, 4);
         }
-
         $res = [
             $tmp[$maxis[0][0]],
             $tmp[$maxis[1][0]],
@@ -47,12 +49,11 @@ class Transaction extends Model
             $tmp[$maxis[3][0]],
             $tmp[$maxis[4][0]]
         ];
-
         return $res;
     }
 
     /**
-     * @return mixed
+     * @return contenu du fichier json sélectionné
      */
     private function lectJson($file){
         $path = "app/objectif/" . basename($file);
@@ -62,6 +63,7 @@ class Transaction extends Model
     }
 
     /**
+     * Fonction récursive qui crée le tableau contenant les 5 maximums
      * @param $tab
      * @param $element
      * @param $index
